@@ -1,0 +1,74 @@
+#!/usr/bin/env sh
+__file=$(basename $0)
+while test $# -gt 0; do
+  case "$1" in
+    -h|--help)
+      echo "$__file - Print list of Docker image tags"
+      echo " "
+      echo "$__file [options] image_version"
+      echo " "
+      echo "options:"
+      echo "-h, --help                show brief help"
+      echo "--latest=VERSION          specify an latest version number"
+      echo "-l, --list                print tags in list mode instead of flags mode"
+      exit 0
+      ;;
+    --latest)
+        shift
+        if test $# -gt 0; then
+            export LATEST=$1
+        else
+            echo "no latest tag specified"
+            exit 1
+        fi
+        shift
+        ;;
+    -l|--list)
+        shift
+        export LIST=1
+        ;;
+    *)
+      break
+      ;;
+  esac
+done
+
+version="$1"
+if [ -z $version ]; then
+    echo "Version name is empty!";
+    exit 1;
+fi;
+
+# echo "LIST $LIST"
+# echo "LATEST $LATEST"
+# echo "$1"
+# exit 0
+
+# Docker image names
+IMAGE_NAMES=(
+    docker.pkg.github.com/x1unix/docker-go-mingw/go-mingw
+    x1unix/go-mingw
+)
+
+# short tag without fix version (X.Y)
+version_short=$(echo $1 | awk '{split($0,v,"."); vv=v[1]"."v[2]; print vv}')
+
+tags=($version $version_short)
+if [[ $LATEST == $version || $LATEST == $version_short ]]; then
+    tags+=("latest")
+fi
+
+if [ $LIST ]; then
+    for name in ${IMAGE_NAMES[*]}; do
+        for tag in ${tags[*]}; do
+            echo "$name:$tag"
+        done
+    done
+    exit 1;
+fi;
+
+for name in ${IMAGE_NAMES[*]}; do
+    for tag in ${tags[*]}; do
+        echo -n "-t $name:$tag "
+    done
+done
