@@ -7,8 +7,6 @@ Docker image for building Go binaries for **Windows** with MinGW-w64 toolchain b
 
 The image provides simple cross-compilation environment for windows 32/64bit builds.
 
-Based on [arch-mingw](https://github.com/maxrd2/arch-mingw) image.
-
 ## Usage
 
 You can pull Docker image with desired Go version from Docker Hub:
