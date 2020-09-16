@@ -19,6 +19,8 @@ docker pull x1unix/go-mingw:latest # or "1.15" for specific Go version
 
 ### Building Go applications inside container
 
+See project build example [here](example/sqlite-app).
+
 Mount directory with app source and build it:
 
 ```bash
