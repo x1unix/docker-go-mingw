@@ -1,7 +1,6 @@
 FROM maxrd2/arch-mingw
 
 ARG GO_VERSION=1.15.2
-LABEL
 USER root
 WORKDIR /tmp
 RUN echo "Downloading Go $GO_VERSION..." && \
