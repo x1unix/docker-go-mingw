@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 __file=$(basename $0)
 while test $# -gt 0; do
   case "$1" in
