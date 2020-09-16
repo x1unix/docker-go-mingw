@@ -30,7 +30,7 @@ jobs:
       - name: Build Image - Go ${{ matrix.go-version }}
         run: |
           tags=$(./tools/get-image-tag --latest $LATEST ${{ matrix.go-version }})
-          docker build $tags -f Dockerfile . --build-arg GO_VERSION=$(GO_VERSION) \
+          docker build $tags -f Dockerfile . --build-arg GO_VERSION=${{ matrix.go-version }} \
       - name: Push Image - Go ${{matrix.go-version}}
         run: |
           for img in $(./tools/get-image-tag --latest $LATEST --list ${{ matrix.go-version }}); do
