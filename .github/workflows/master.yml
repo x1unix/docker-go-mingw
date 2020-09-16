@@ -37,20 +37,3 @@ jobs:
             echo "Pushing $img...";
             docker push $img;
           done
-
-      # - name: Push to Docker Hub
-      #   uses: docker/build-push-action@v1
-      #   with:
-      #     username: ${{ secrets.DOCKER_HUB_USER }}
-      #     password: ${{ secrets.DOCKER_HUB_PASS }}
-      #     repository: x1unix/go-mingw
-      #     tag_with_ref: true
-      # - name: Push to GitHub Packages
-      #   uses: docker/build-push-action@v1
-      #   with:
-      #     username: ${{ github.actor }}
-      #     password: ${{ secrets.GITHUB_TOKEN }}
-      #     registry: docker.pkg.github.com
-      #     repository: x1unix/docker-go-mingw/go-mingw
-      #     tag_with_ref: true
-
