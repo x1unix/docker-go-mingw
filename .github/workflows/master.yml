@@ -8,6 +8,7 @@ on:
 jobs:
   build:
     name: Build Images
+    runs-on: ubuntu-latest
     env:
       LATEST: 1.15.2
     strategy:
