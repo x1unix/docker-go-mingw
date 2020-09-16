@@ -1,5 +1,8 @@
 # go-mingw
 
+[![Docker Hub](https://img.shields.io/docker/pulls/x1unix/go-mingw.svg)](https://hub.docker.com/r/x1unix/go-mingw)
+[![Docker Hub](https://img.shields.io/docker/v/x1unix/go-mingw.svg?sort=semver)](https://hub.docker.com/r/x1unix/go-mingw)
+
 Docker image for building Go binaries for **Windows** with MinGW-w64 toolchain based on **Arch Linux**.
 
 The image provides simple cross-compilation environment for windows 32/64bit builds. Amongst other Go and MinGW binaries/libraries image includes GCC, CMake, GNU Autotools, Meson, FFMPEG, Qt5, KF5, Boost.
