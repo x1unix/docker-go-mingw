@@ -12,7 +12,7 @@ The image provides simple cross-compilation environment for windows 32/64bit bui
 You can pull Docker image with desired Go version from Docker Hub:
 
 ```bash
-docker pull x1unix/go-mingw:latest # or "1.16" for specific Go version
+docker pull x1unix/go-mingw:latest # or "1.17" for specific Go version
 ```
 
 ### Building Go applications inside container
@@ -32,8 +32,8 @@ You will get compiled Windows binary.
 You can build image locally with specified Go version:
 
 ```bash
-make image GO_VERSION=1.16
+make image GO_VERSION=1.17
 ```
 
-Replace `1.16` with desired Go version.
+Replace `1.17` with desired Go version.
 
