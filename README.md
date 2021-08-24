@@ -25,6 +25,12 @@ Mount directory with app source and build it:
 docker run --rm -it -v /YourPackageSrc:/tmp/build x1unix/go-mingw go build YourPackage
 ```
 
+### Go Build Cache
+
+In order to speed up build times and keep Go build cache, mount your GOPATH or store it in a separate Docker volume.
+
+See [Docker volumes docs](https://docs.docker.com/storage/volumes/) for more info.
+
 You will get compiled Windows binary.
 
 ## Local build
