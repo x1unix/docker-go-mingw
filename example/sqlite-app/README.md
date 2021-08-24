@@ -4,4 +4,4 @@ This is an example app which requires CGO and MinGW toolchain to be built for Wi
 
 Code is taken from [mattn/go-sqlite3](https://github.com/mattn/go-sqlite3/blob/master/_example/simple/simple.go)
 
-Run `make win` to make application for windows
+Run `make` to build application for windows
