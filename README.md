@@ -1,8 +1,5 @@
 # go-mingw
 
-[![Docker Hub](https://img.shields.io/docker/pulls/x1unix/go-mingw.svg)](https://hub.docker.com/r/x1unix/go-mingw)
-[![Docker Hub](https://img.shields.io/docker/v/x1unix/go-mingw.svg?sort=semver)](https://hub.docker.com/r/x1unix/go-mingw)
-
 Docker image for building Go binaries for **Windows** with MinGW-w64 toolchain based on Alpine Linux.
 
 The repository provides simple cross-compilation environment for windows 32 and 64bit builds.
