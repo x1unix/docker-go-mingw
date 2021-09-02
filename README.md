@@ -7,8 +7,10 @@ Docker image for building Go binaries for **Windows** with MinGW-w64 toolchain b
 
 The repository provides simple cross-compilation environment for windows 32 and 64bit builds.
 
-* [`x1unix/go-mingw`](https://hub.docker.com/r/x1unix/go-mingw) - 64-bit toolchain
-* [`x1unix/go-mingw-i386`](https://hub.docker.com/r/x1unix/go-mingw-i386) - 32-bit toolchain
+| Image            | Badges                | Description         |
+| ---------------- | --------------------- | ------------------- |
+| [`x1unix/go-mingw`](https://hub.docker.com/r/x1unix/go-mingw) | ![Docker Pulls](https://img.shields.io/docker/pulls/x1unix/go-mingw.svg) ![Docker Hub](https://img.shields.io/docker/v/x1unix/go-mingw.svg?sort=semver) | 64-bit toolchain (amd64) |
+| [`x1unix/go-mingw-i386`](https://hub.docker.com/r/x1unix/go-mingw-i386) | ![Docker Pulls](https://img.shields.io/docker/pulls/x1unix/go-mingw-i386.svg) ![Docker Hub](https://img.shields.io/docker/v/x1unix/go-mingw-i386.svg?sort=semver) | 32-bit toolchain (i386) |
 
 ## Usage
 
