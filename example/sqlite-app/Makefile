@@ -16,6 +16,7 @@ build:
 		-v "$(GOPATH)/src":/go/src \
 		-v "$(GOPATH)/pkg":/go/pkg \
 		-v "$(PWD)":/go/work \
+		-e GOARCH=386 \
 		-w /go/work \
 		x1unix/go-mingw:$(GO_VERSION) \
 		/bin/sh -c 'go build $(GO_BUILD_FLAGS) .'
@@ -26,11 +27,11 @@ build-i386:
 	docker run --rm -it \
 		-u "$${UID}:$${GID}" \
 		-e GOCACHE=/go/.cache \
+		-e GOARCH=386 \
 		-v "$(GOCACHE)":/go/.cache \
 		-v "$(GOPATH)/src":/go/src \
 		-v "$(GOPATH)/pkg":/go/pkg \
 		-v "$(PWD)":/go/work \
 		-w /go/work \
-		--platform linux/386 \
-		x1unix/go-mingw-i386:$(GO_VERSION) \
-		/bin/sh -c 'go build $(GO_BUILD_FLAGS) -o sqlite-app-i386 .'
+		x1unix/go-mingw:$(GO_VERSION) \
+		/bin/sh -c 'go build $(GO_BUILD_FLAGS) -o sqlite-app-i386.exe .'

@@ -1,24 +1,18 @@
 # go-mingw
 
-Docker image for building Go binaries for **Windows** with MinGW-w64 toolchain based on Alpine Linux.
+[![Docker Hub](https://img.shields.io/docker/pulls/x1unix/go-mingw.svg)](https://hub.docker.com/r/x1unix/go-mingw)
+[![Docker Hub](https://img.shields.io/docker/v/x1unix/go-mingw.svg?sort=semver)](https://hub.docker.com/r/x1unix/go-mingw)
+
+Docker image for building Go binaries for **Windows** with MinGW-w64 toolchain based on official Go Docker image.
 
 The repository provides simple cross-compilation environment for windows 32 and 64bit builds.
-
-| Image            | Badges                | Description         |
-| ---------------- | --------------------- | ------------------- |
-| [`x1unix/go-mingw`](https://hub.docker.com/r/x1unix/go-mingw) | ![Docker Pulls](https://img.shields.io/docker/pulls/x1unix/go-mingw.svg) ![Docker Hub](https://img.shields.io/docker/v/x1unix/go-mingw.svg?sort=semver) | 64-bit toolchain (amd64) |
-| [`x1unix/go-mingw-i386`](https://hub.docker.com/r/x1unix/go-mingw-i386) | ![Docker Pulls](https://img.shields.io/docker/pulls/x1unix/go-mingw-i386.svg) ![Docker Hub](https://img.shields.io/docker/v/x1unix/go-mingw-i386.svg?sort=semver) | 32-bit toolchain (i386) |
 
 ## Usage
 
 You can pull Docker image with desired Go version from Docker Hub:
 
 ```bash
-# 64-bit toolchain
 docker pull x1unix/go-mingw:latest # or "1.17" for specific Go version
-
-# 32-bit toolchain
-docker pull x1unix/go-mingw-i386:latest
 ```
 
 **Recommended:** Please take a look at [full project build example](example/sqlite-app) before starting to work.
@@ -37,14 +31,13 @@ You will get compiled Windows binary.
 
 **For 32-bit toolchain**
 
-```bash
-docker run --rm --platform linux/386 -it -v /YourPackageSrc:/go/work \
-    -w /go/work \
-    x1unix/go-mingw-i386 go build .
-```
+To build a 32-bit executable, set `GOARCH=386` variable:
 
-The `--platform` parameter is optional. If not present, Docker will warn you 
-about host and container architecture mismatch.
+```bash
+docker run --rm -it -e GOARCH=386 -v /YourPackageSrc:/go/work \
+    -w /go/work \
+    x1unix/go-mingw go build .
+```
 
 **Recommended:** See full project build example [here](example/sqlite-app).
 
@@ -85,7 +78,7 @@ In order to speed up build times and keep Go build cache, you can mount your Go 
 **Local GOPATH**
 
 ```bash
-ocker run --rm -it \
+docker run --rm -it \
     -u $UID \
     -v /YourPackageSrc:/go/work \
     -v $(go env GOCACHE):/go/cache \

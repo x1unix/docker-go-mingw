@@ -1,16 +1,15 @@
 ARG GO_VERSION=1.15
-FROM golang:${GO_VERSION}-alpine
+FROM golang:${GO_VERSION}-bullseye
 
-RUN apk add mingw-w64-binutils &&\
-    apk add mingw-w64-winpthreads && \
-    apk add mingw-w64-headers && \
-    apk add mingw-w64-crt && \
-    apk add mingw-w64-gcc && \
-    apk add make
+RUN apt update &&\
+    apt install \
+    make mingw-w64 bash --yes
+ADD docker-entrypoint.sh /usr/bin/docker-entrypoint.sh
+RUN chmod +x /usr/bin/docker-entrypoint.sh
 ENV PATH=/go/bin:$PATH \
     CGO_ENABLED=1 \
-    CXX_FOR_TARGET=x86_64-w64-mingw32-g++ \
-    CC_FOR_TARGET=x86_64-w64-mingw32-gcc \
-    CC=x86_64-w64-mingw32-gcc \
     GOOS=windows
 WORKDIR /go
+ENTRYPOINT [ "/usr/bin/docker-entrypoint.sh"]
+# ENTRYPOINT [ "/bin/bash","-c","/usr/bin/docker-entrypoint.sh"]
+# CMD [ "/usr/bin/docker-entrypoint.sh"]
