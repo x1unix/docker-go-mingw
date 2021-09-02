@@ -5,7 +5,7 @@
 
 Docker image for building Go binaries for **Windows** with MinGW-w64 toolchain based on Alpine Linux.
 
-The image provides simple cross-compilation environment for windows 32/64bit builds.
+The image provides simple cross-compilation environment for windows 64bit builds.
 
 ## Usage
 
@@ -100,6 +100,18 @@ In addition to Go build cache, you may also want to mount Go modules cache
 to avoid modules re-download on each build.
 
 To do this, mount your GOPATH or Go modules directory (`$GOPATH/pkg`).
+
+### 32-bit builds
+
+This image is based on Alpine Linux, and unfortunately it provides Mingw compiler with toolchain only for x86-64 platform.
+
+I can recommend you to install Mingw on use other image (like Ubuntu) which provides mingw toolchain with both 32 and 64bit toolchains and set a couple of environment variables before build:
+
+```
+CXX_FOR_TARGET=i686-w64-mingw32-g++
+CC_FOR_TARGET=i686-w64-mingw32-gcc
+CC=i686-w64-mingw32-gcc
+```
 
 ### Building custom Docker image
 
