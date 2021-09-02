@@ -5,14 +5,21 @@
 
 Docker image for building Go binaries for **Windows** with MinGW-w64 toolchain based on Alpine Linux.
 
-The image provides simple cross-compilation environment for windows 64bit builds.
+The repository provides simple cross-compilation environment for windows 32 and 64bit builds.
+
+* [`x1unix/go-mingw`](https://hub.docker.com/r/x1unix/go-mingw) - 64-bit toolchain
+* [`x1unix/go-mingw-i386`](https://hub.docker.com/r/x1unix/go-mingw-i386) - 32-bit toolchain
 
 ## Usage
 
 You can pull Docker image with desired Go version from Docker Hub:
 
 ```bash
+# 64-bit toolchain
 docker pull x1unix/go-mingw:latest # or "1.17" for specific Go version
+
+# 32-bit toolchain
+docker pull x1unix/go-mingw-i386:latest
 ```
 
 **Recommended:** Please take a look at [full project build example](example/sqlite-app) before starting to work.
@@ -28,6 +35,17 @@ docker run --rm -it -v /YourPackageSrc:/go/work \
 ```
 
 You will get compiled Windows binary.
+
+**For 32-bit toolchain**
+
+```bash
+docker run --rm --platform linux/386 -it -v /YourPackageSrc:/go/work \
+    -w /go/work \
+    x1unix/go-mingw-i386 go build .
+```
+
+The `--platform` parameter is optional. If not present, Docker will warn you 
+about host and container architecture mismatch.
 
 **Recommended:** See full project build example [here](example/sqlite-app).
 
@@ -100,18 +118,6 @@ In addition to Go build cache, you may also want to mount Go modules cache
 to avoid modules re-download on each build.
 
 To do this, mount your GOPATH or Go modules directory (`$GOPATH/pkg`).
-
-### 32-bit builds
-
-This image is based on Alpine Linux, and unfortunately it provides Mingw compiler with toolchain only for x86-64 platform.
-
-I can recommend you to install Mingw on use other image (like Ubuntu) which provides mingw toolchain with both 32 and 64bit toolchains and set a couple of environment variables before build:
-
-```
-CXX_FOR_TARGET=i686-w64-mingw32-g++
-CC_FOR_TARGET=i686-w64-mingw32-gcc
-CC=i686-w64-mingw32-gcc
-```
 
 ### Building custom Docker image
 

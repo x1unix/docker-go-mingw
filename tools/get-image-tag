@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 __file=$(basename $0)
+IMG_NAME="go-mingw"
 while test $# -gt 0; do
   case "$1" in
     -h|--help)
@@ -8,9 +9,10 @@ while test $# -gt 0; do
       echo "$__file [options] image_version"
       echo " "
       echo "options:"
-      echo "-h, --help                show brief help"
+      echo "--name                    specify a custom image name (default: ${IMG_NAME})"
       echo "--latest=VERSION          specify an latest version number"
       echo "-l, --list                print tags in list mode instead of flags mode"
+      echo "-h, --help                show brief help"
       exit 0
       ;;
     --latest)
@@ -19,6 +21,16 @@ while test $# -gt 0; do
             export LATEST=$1
         else
             echo "no latest tag specified"
+            exit 1
+        fi
+        shift
+        ;;
+    --name)
+        shift
+        if test $# -gt 0; then
+            export IMG_NAME=$1
+        else
+            echo "name required"
             exit 1
         fi
         shift
@@ -46,8 +58,8 @@ fi;
 
 # Docker image names
 IMAGE_NAMES=(
-    docker.pkg.github.com/x1unix/docker-go-mingw/go-mingw
-    x1unix/go-mingw
+    "docker.pkg.github.com/x1unix/docker-go-mingw/$IMG_NAME"
+    "x1unix/$IMG_NAME"
 )
 
 # short tag without fix version (X.Y)

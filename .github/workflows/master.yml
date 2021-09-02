@@ -30,10 +30,20 @@ jobs:
       - name: Build Image - Go ${{ matrix.go-version }}
         run: |
           tags=$(./tools/get-image-tag --latest $LATEST ${{ matrix.go-version }})
-          docker build $tags -f Dockerfile . --build-arg GO_VERSION=${{ matrix.go-version }} \
+          docker build --platform linux/amd64 $tags -f Dockerfile . --build-arg GO_VERSION=${{ matrix.go-version }} \
+      - name: Build i386 Image - Go ${{ matrix.go-version }}
+        run: |
+          tags=$(./tools/get-image-tag --name go-mingw-i386 --latest $LATEST ${{ matrix.go-version }})
+          docker build --platform linux/386 $tags -f i386.Dockerfile . --build-arg GO_VERSION=${{ matrix.go-version }} \
       - name: Push Image - Go ${{matrix.go-version}}
         run: |
           for img in $(./tools/get-image-tag --latest $LATEST --list ${{ matrix.go-version }}); do
+            echo "Pushing $img...";
+            docker push $img;
+          done
+      - name: Push i386 Image - Go ${{matrix.go-version}}
+        run: |
+          for img in $(./tools/get-image-tag --name go-mingw-i386 --latest $LATEST --list ${{ matrix.go-version }}); do
             echo "Pushing $img...";
             docker push $img;
           done
