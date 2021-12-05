@@ -10,10 +10,10 @@ jobs:
     name: Build Images
     runs-on: ubuntu-latest
     env:
-      LATEST: 1.17.3
+      LATEST: 1.17.4
     strategy:
       matrix:
-        go-version: [1.17.3, 1.16.10]
+        go-version: [1.17.4, 1.16.11]
     steps:
       - uses: actions/checkout@v2
       - name: Login to DockerHub
