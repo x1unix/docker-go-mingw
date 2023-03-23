@@ -13,7 +13,7 @@ jobs:
       LATEST: 1.20.2
     strategy:
       matrix:
-        go-version: [1.20.0, 1.19.7]
+        go-version: [1.20.2, 1.19.7]
     steps:
       - uses: actions/checkout@v2
       - name: Login to DockerHub
