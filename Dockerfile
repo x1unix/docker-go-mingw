@@ -11,5 +11,3 @@ ENV PATH=/go/bin:$PATH \
     GOOS=windows
 WORKDIR /go
 ENTRYPOINT [ "/usr/bin/docker-entrypoint.sh"]
-# ENTRYPOINT [ "/bin/bash","-c","/usr/bin/docker-entrypoint.sh"]
-# CMD [ "/usr/bin/docker-entrypoint.sh"]
