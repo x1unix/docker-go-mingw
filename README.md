@@ -144,3 +144,9 @@ make image GO_VERSION=1.20
 
 > [!IMPORTANT]
 > Replace `1.20` with desired Go version.
+
+## Credits
+
+* [llvm-mingw](https://github.com/mstorsjo/llvm-mingw) for Windows on Arm support.
+* [mingw-w64](https://www.mingw-w64.org/) - for Windows on x86 and amd64 support.
+* The Go maintainers.
