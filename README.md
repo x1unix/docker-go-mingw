@@ -7,6 +7,17 @@ Docker image for building Go binaries for **Windows** with MinGW-w64 toolchain b
 
 Image provides simple cross-compilation environment for windows 32 and 64bit builds.
 
+**Supports Windows on Arm!**
+
+## Supported Architectures
+
+Here is a list of supported host and target architectures:
+
+| Host Architecture   | Win x86 | Win x86-64 | Win Arm |
+| ------------------- | ------- | ---------- | ------- |
+| **arm64 / aarch64** | ✅      |  ✅        | ✅      |
+| **amd64**           | ✅      |  ✅        | ✅      |
+
 ## Usage
 
 You can pull Docker image with desired Go version from Docker Hub:
@@ -16,7 +27,7 @@ docker pull x1unix/go-mingw:latest # or "1.21" for specific Go version
 ```
 
 > [!TIP]
-> Please take a look at [full project build example](example/sqlite-app) before starting to work.
+> Please take a look at [examples](example/) before starting to work.
 
 ### Building Go applications inside container
 
@@ -30,7 +41,17 @@ docker run --rm -it -v /YourPackageSrc:/go/work \
 
 You will get compiled Windows binary.
 
-**For 32-bit toolchain**
+#### Windows On Arm
+
+Set `GOARCH=arm64` to build ARM Windows binary:
+
+```shell
+docker run --rm -it -e GOARCH=arm64 -v /YourPackageSrc:/go/work \
+    -w /go/work \
+    x1unix/go-mingw go build .
+```
+
+#### For 32-bit toolchain
 
 To build a 32-bit executable, set `GOARCH=386` variable:
 
@@ -41,7 +62,7 @@ docker run --rm -it -e GOARCH=386 -v /YourPackageSrc:/go/work \
 ```
 
 > [!TIP]
-> See full project build example [here](example/sqlite-app).
+> See check project build examples [here](example).
 
 ### Go linker flags override
 
@@ -124,3 +145,8 @@ make image GO_VERSION=1.20
 > [!IMPORTANT]
 > Replace `1.20` with desired Go version.
 
+## Credits
+
+* [llvm-mingw](https://github.com/mstorsjo/llvm-mingw) for Windows on Arm support.
+* [mingw-w64](https://www.mingw-w64.org/) - for Windows on x86 and amd64 support.
+* The Go maintainers.

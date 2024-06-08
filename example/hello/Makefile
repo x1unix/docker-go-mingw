@@ -14,7 +14,7 @@ docker run --rm -it \
 	-v "$(PWD)":/go/work \
 	-w /go/work \
 	x1unix/go-mingw:$(GO_VERSION) \
-	go build $(GO_BUILD_FLAGS) -o sqlite-app-$(1).exe .
+	go build $(GO_BUILD_FLAGS) -o hello-$(1).exe .
 endef
 
 .PHONY:all
