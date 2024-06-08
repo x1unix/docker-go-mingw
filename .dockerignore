@@ -1,6 +1,7 @@
 .gitignore
 .idea
 .vscode
+.github
 Makefile
 README.md
 tools
