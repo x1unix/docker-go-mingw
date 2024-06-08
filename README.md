@@ -27,7 +27,7 @@ docker pull x1unix/go-mingw:latest # or "1.21" for specific Go version
 ```
 
 > [!TIP]
-> Please take a look at [full project build example](example/sqlite-app) before starting to work.
+> Please take a look at [examples](example/) before starting to work.
 
 ### Building Go applications inside container
 
@@ -62,7 +62,7 @@ docker run --rm -it -e GOARCH=386 -v /YourPackageSrc:/go/work \
 ```
 
 > [!TIP]
-> See full project build example [here](example/sqlite-app).
+> See check project build examples [here](example).
 
 ### Go linker flags override
 
@@ -144,4 +144,3 @@ make image GO_VERSION=1.20
 
 > [!IMPORTANT]
 > Replace `1.20` with desired Go version.
-
