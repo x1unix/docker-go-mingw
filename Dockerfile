@@ -1,5 +1,5 @@
 ARG GO_VERSION=1.15
-FROM golang:${GO_VERSION}-bullseye
+FROM golang:${GO_VERSION}-bookworm
 
 RUN apt update &&\
     apt install \
