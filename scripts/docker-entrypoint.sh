@@ -16,8 +16,14 @@ amd64)
     export CXX=i686-w64-mingw32-g++
     export CC=i686-w64-mingw32-gcc
     ;;
+arm64)
+    export CXX_FOR_TARGET=aarch64-w64-mingw32-g++
+    export CC_FOR_TARGET=aarch64-w64-mingw32-gcc
+    export CXX=aarch64-w64-mingw32-g++
+    export CC=aarch64-w64-mingw32-gcc
+    ;;
 *)
-    echo "Unsupported GOARCH variable value '$GOARCH'. Please set GOARCH environment variable to 'amd64' or '386'"
+    echo "Unsupported GOARCH variable value '$GOARCH'. Please set GOARCH environment variable to 'amd64', 'arm64' or '386'"
     exit 2
     ;;
 esac

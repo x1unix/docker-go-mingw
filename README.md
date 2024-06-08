@@ -7,14 +7,16 @@ Docker image for building Go binaries for **Windows** with MinGW-w64 toolchain b
 
 Image provides simple cross-compilation environment for windows 32 and 64bit builds.
 
+**Supports Windows on Arm!**
+
 ## Supported Architectures
 
 Here is a list of supported host and target architectures:
 
 | Host Architecture   | Win x86 | Win x86-64 | Win Arm |
 | ------------------- | ------- | ---------- | ------- |
-| **arm64 / aarch64** | ✅      |  ✅        | 🚫      |
-| **amd64**           | ✅      |  ✅        | 🚫      |
+| **arm64 / aarch64** | ✅      |  ✅        | ✅      |
+| **amd64**           | ✅      |  ✅        | ✅      |
 
 ## Usage
 
@@ -39,7 +41,17 @@ docker run --rm -it -v /YourPackageSrc:/go/work \
 
 You will get compiled Windows binary.
 
-**For 32-bit toolchain**
+#### Windows On Arm
+
+Set `GOARCH=arm64` to build ARM Windows binary:
+
+```shell
+docker run --rm -it -e GOARCH=arm64 -v /YourPackageSrc:/go/work \
+    -w /go/work \
+    x1unix/go-mingw go build .
+```
+
+#### For 32-bit toolchain
 
 To build a 32-bit executable, set `GOARCH=386` variable:
 
