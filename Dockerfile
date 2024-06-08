@@ -1,4 +1,4 @@
-ARG GO_VERSION=1.15
+ARG GO_VERSION=1.20
 FROM golang:${GO_VERSION}-bookworm
 
 RUN apt update &&\

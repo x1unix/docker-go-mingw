@@ -7,6 +7,15 @@ Docker image for building Go binaries for **Windows** with MinGW-w64 toolchain b
 
 Image provides simple cross-compilation environment for windows 32 and 64bit builds.
 
+## Supported Architectures
+
+Here is a list of supported host and target architectures:
+
+| Host Architecture   | Win x86 | Win x86-64 | Win Arm |
+| ------------------- | ------- | ---------- | ------- |
+| **arm64 / aarch64** | ✅      |  ✅        | 🚫      |
+| **amd64**           | ✅      |  ✅        | 🚫      |
+
 ## Usage
 
 You can pull Docker image with desired Go version from Docker Hub:
