@@ -1,0 +1,39 @@
+# GitLab CI example for cross-compiling for Windows
+stages:
+  - build
+
+build_windows_386:
+  stage: build
+  image: x1unix/go-mingw:1.22   # Tag is desired Go version.
+  variables:
+    GOARCH: 386
+  script:
+    - go build -o myapp-386.exe .
+  artifacts:
+    paths:
+      - myapp-386.exe
+    expire_in: 1 week
+
+build_windows_amd64:
+  stage: build
+  image: x1unix/go-mingw:1.22
+  variables:
+    GOARCH: amd64
+  script:
+    - go build -o myapp-amd64.exe .
+  artifacts:
+    paths:
+      - myapp-amd64.exe
+    expire_in: 1 week
+
+build_windows_arm64:
+  stage: build
+  image: x1unix/go-mingw:1.22
+  variables:
+    GOARCH: arm64
+  script:
+    - go build -o myapp-arm64.exe .
+  artifacts:
+    paths:
+      - myapp-arm64.exe
+    expire_in: 1 week

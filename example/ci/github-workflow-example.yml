@@ -1,0 +1,46 @@
+# This is GitHub actions workflow example.
+# Put this into `.github/workflows` directory to use.
+name: Go Build for Windows
+
+# Rules to trigger job, customize for your needs.
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        goarch: ['386', 'amd64', 'arm64']
+    env:
+      GO_VERSION: '1.22'  # Define the Go version here
+
+    container:
+      image: x1unix/go-mingw:${{ env.GO_VERSION }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: ${{ env.GO_VERSION }}
+
+      - name: Build for Windows
+        run: |
+          echo "Building for Windows ${{ matrix.goarch }}"
+          go build -o myapp-${{ matrix.goarch }}.exe .
+        env:
+          GOARCH: ${{ matrix.goarch }}
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: myapp-${{ matrix.goarch }}
+          path: myapp-${{ matrix.goarch }}.exe
