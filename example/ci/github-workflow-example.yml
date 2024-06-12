@@ -21,7 +21,7 @@ jobs:
       GO_VERSION: '1.22'  # Define the Go version here
 
     container:
-      image: x1unix/go-mingw:${{ env.GO_VERSION }}
+      image: ghcr.io/x1unix/docker-go-mingw/go-mingw:${{ env.GO_VERSION }}
 
     steps:
       - name: Checkout code
