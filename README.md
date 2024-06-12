@@ -29,6 +29,10 @@ docker pull x1unix/go-mingw:latest # or "1.21" for specific Go version
 > [!TIP]
 > Please take a look at [examples](example/) before starting to work.
 
+### Using on CI/CD
+
+Examples for GitLab CI and GitHub Actions are available [here](https://github.com/x1unix/docker-go-mingw/blob/master/example/ci)
+
 ### Building Go applications inside container
 
 Mount directory with app source and build it:
