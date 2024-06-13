@@ -20,10 +20,13 @@ Here is a list of supported host and target architectures:
 
 ## Usage
 
-You can pull Docker image with desired Go version from Docker Hub:
+You can pull Docker image with desired Go version:
 
 ```shell
-docker pull x1unix/go-mingw:latest # or "1.21" for specific Go version
+docker pull x1unix/go-mingw:latest # or "1.22" for specific Go version
+
+# Or if you prefer to use GHCR:
+docker pull ghcr.io/x1unix/docker-go-mingw/go-mingw:1.22
 ```
 
 > [!TIP]
