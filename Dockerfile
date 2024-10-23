@@ -1,5 +1,5 @@
 ARG GO_VERSION=1.20
-FROM golang:${GO_VERSION}-bookworm as builder
+FROM golang:${GO_VERSION}-bookworm AS builder
 ARG GO_VERSION
 ARG LLVM_MINGW64_VER=20240606
 ARG LLVM_MINGW64_SRC="https://github.com/mstorsjo/llvm-mingw/releases/download"
