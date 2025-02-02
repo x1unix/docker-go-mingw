@@ -21,6 +21,7 @@ arm64)
     export CC_FOR_TARGET=aarch64-w64-mingw32-gcc
     export CXX=aarch64-w64-mingw32-g++
     export CC=aarch64-w64-mingw32-gcc
+    export CGO_FLAGS="$CGO_FLAGS -I/usr/generic-w64-mingw32/include"
     ;;
 *)
     echo "Unsupported GOARCH variable value '$GOARCH'. Please set GOARCH environment variable to 'amd64', 'arm64' or '386'"
