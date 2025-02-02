@@ -5,6 +5,9 @@ on:
   release:
     types:
       - created
+env:
+  LLVM_MINGW64_VER: 20250114
+
 jobs:
   build:
     name: Build image
@@ -52,6 +55,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
             GO_VERSION=${{ env.GO_VERSION }}
+            LLVM_MINGW64_VER=${{ env.LLVM_MINGW64_VER }}
           push: true
       - name: Print image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
