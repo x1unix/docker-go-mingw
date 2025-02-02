@@ -19,7 +19,7 @@ RUN apt update &&\
 COPY --chmod=0755 scripts/docker-entrypoint.sh /usr/bin/docker-entrypoint.sh
 COPY --chmod=0755 scripts/install-llvm-mingw64.sh /tmp/install-llvm-mingw64.sh 
 COPY --from=builder /tmp/llvm-mingw64 /tmp/llvm-mingw64
-RUN /tmp/install-llvm-mingw64.sh /tmp/llvm-mingw64
+RUN /tmp/install-llvm-mingw64.sh /tmp/llvm-mingw64 && rm -rf /tmp/*
 ENV PATH=/go/bin:$PATH \
     CGO_ENABLED=1 \
     GOOS=windows
