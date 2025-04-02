@@ -23,10 +23,10 @@ Here is a list of supported host and target architectures:
 You can pull Docker image with desired Go version:
 
 ```shell
-docker pull x1unix/go-mingw:latest # or "1.22" for specific Go version
+docker pull x1unix/go-mingw:latest # or "1.24" for specific Go version
 
 # Or if you prefer to use GHCR:
-docker pull ghcr.io/x1unix/docker-go-mingw/go-mingw:1.22
+docker pull ghcr.io/x1unix/docker-go-mingw/go-mingw:1.24
 ```
 
 > [!TIP]
@@ -146,11 +146,11 @@ To do this, mount your GOPATH or Go modules directory (`$GOPATH/pkg`).
 Docker image can be rebuilt locally with a desired Go version:
 
 ```shell
-make image GO_VERSION=1.20
+make image GO_VERSION=1.24
 ```
 
 > [!IMPORTANT]
-> Replace `1.20` with desired Go version.
+> Replace `1.24` with desired Go version.
 
 ## Credits
 
