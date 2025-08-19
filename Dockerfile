@@ -1,5 +1,5 @@
-ARG GO_VERSION=1.20
-FROM golang:${GO_VERSION}-bookworm AS builder
+ARG GO_VERSION=1.24
+FROM golang:${GO_VERSION}-trixie AS builder
 ARG GO_VERSION
 ARG LLVM_MINGW64_VER=20241030
 ARG LLVM_MINGW64_SRC="https://github.com/mstorsjo/llvm-mingw/releases/download"
@@ -11,7 +11,7 @@ COPY --chmod=0755 scripts/setup-llvm-mingw64.sh /tmp/
 RUN /tmp/setup-llvm-mingw64.sh
 
 ARG GO_VERSION
-FROM golang:${GO_VERSION}-bookworm
+FROM golang:${GO_VERSION}-trixie
 
 RUN apt update &&\
     apt install \
