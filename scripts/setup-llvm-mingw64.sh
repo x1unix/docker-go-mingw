@@ -10,6 +10,12 @@ if [ -z "$LLVM_MINGW64_SRC" ]; then
     exit 1
 fi
 
+if [ -z "$LLVM_MINGW_UBUNTU_REL" ]; then
+    echo "Error: LLVM_MINGW_UBUNTU_REL is undefined"
+    env
+    exit 1
+fi
+
 if [ -z "$LLVM_MINGW64_VER" ]; then
     echo "Error: LLVM_MINGW64_VER is undefined"
     env
@@ -31,7 +37,7 @@ x86_64 | amd64)
     ;;
 esac
 
-pkg_dir="llvm-mingw-$LLVM_MINGW64_VER-ucrt-ubuntu-20.04-$m_arch"
+pkg_dir="llvm-mingw-$LLVM_MINGW64_VER-ucrt-ubuntu-$LLVM_MINGW_UBUNTU_REL-$m_arch"
 pkg_file="$pkg_dir.tar.xz"
 src_url="$LLVM_MINGW64_SRC/$LLVM_MINGW64_VER/$pkg_file"
 echo ":: Downloading $src_url ..."
