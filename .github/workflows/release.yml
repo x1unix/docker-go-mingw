@@ -58,6 +58,7 @@ jobs:
           build-args: |
             GO_VERSION=${{ env.GO_VERSION }}
             LLVM_MINGW64_VER=${{ env.LLVM_MINGW64_VER }}
+            LLVM_MINGW_UBUNTU_REL=${{ env.LLVM_MINGW_UBUNTU_REL }}
           push: true
       - name: Print image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
