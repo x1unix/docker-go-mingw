@@ -6,7 +6,7 @@ on:
     types:
       - created
 env:
-  LLVM_MINGW64_VER: 20250709
+  LLVM_MINGW64_VER: 20250812
 
 jobs:
   build:
