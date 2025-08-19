@@ -6,7 +6,9 @@ on:
     types:
       - created
 env:
-  LLVM_MINGW64_VER: 20250812
+  # See: https://github.com/mstorsjo/llvm-mingw/releases
+  LLVM_MINGW64_VER: '20250812'
+  LLVM_MINGW_UBUNTU_REL: '22.04'
 
 jobs:
   build:
