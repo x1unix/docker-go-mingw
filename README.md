@@ -13,10 +13,10 @@ Image provides simple cross-compilation environment for windows 32 and 64bit bui
 
 Here is a list of supported host and target architectures:
 
-| Host Architecture   | Win x86 | Win x86-64 | Win Arm |
-| ------------------- | ------- | ---------- | ------- |
-| **arm64 / aarch64** | ✅      |  ✅        | ✅      |
-| **amd64**           | ✅      |  ✅        | ✅      |
+| Host Architecture   | Win x86 | Win x86-64 | Win Arm64 |
+| ------------------- | ------- | ---------- | --------- |
+| **arm64 / aarch64** | ✅      |  ✅        | ✅        |
+| **amd64**           | ✅      |  ✅        | ✅        |
 
 ## Usage
 
