@@ -1,3 +1,5 @@
+
+
 # go-mingw
 
 [![Docker Hub](https://img.shields.io/docker/pulls/x1unix/go-mingw.svg)](https://hub.docker.com/r/x1unix/go-mingw)
@@ -78,7 +80,7 @@ Go linker and compiler flags can be specified using container environment variab
 **Example:**
 
 ```shell
-docker exec -it
+docker run -it
     -e LDFLAGS="-linkmode external -extldflags '-static -s -w'"
     ...
 ```
